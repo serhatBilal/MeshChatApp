@@ -4,12 +4,13 @@ project(MeshChatApp VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick QuickControls2 Bluetooth)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
 qt_add_executable(appMeshChatApp
     main.cpp
+    bluetoothmanager.cpp
 )
 
 qt_add_qml_module(appMeshChatApp
@@ -31,7 +32,7 @@ set_target_properties(appMeshChatApp PROPERTIES
 )
 
 target_link_libraries(appMeshChatApp
-    PRIVATE Qt6::Quick
+    PRIVATE Qt6::Core Qt6::Gui Qt6::Qml Qt6::Quick Qt6::QuickControls2 Qt6::Bluetooth
 )
 
 include(GNUInstallDirs)
